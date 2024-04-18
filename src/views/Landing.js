@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-// import '../css/main.css';
+import '../css/Landing.css';
 
-function Home(props) {
+function Landing(props) {
   const [textLoaded, setTextLoaded] = useState(false);
   const [buttonsLoaded, setButtonsLoaded] = useState(false);
 
@@ -27,4 +27,4 @@ function Home(props) {
   );
 }
 
-export default Home;
+export default Landing;

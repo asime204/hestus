@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from 'react';
 import { Routes, Route, BrowserRouter as Router, redirect } from 'react-router-dom';
 // import Nav from './components/Nav';
-import Home from './views/Home';
+import Landing from './views/Landing';
 // import SignUp from './views/Signup';
 // import Login from './views/Login';
 // import Feed from './views/Feed';
@@ -111,7 +111,7 @@ export default function App() {
                 {showMessage()} */}
 
                     <Routes>
-                        <Route path='/' element={<Home />} />
+                        <Route path='/' element={<Landing />} />
                         {/* <Route path='/budget' element={<Budget user={user} paychecks={paychecks} setPaychecks={setPaychecks} bills={bills} setBills={setBills} setLeftOver={setLeftOver} calculateLeftOver={calculateLeftOver} handleAddPaycheck={handleAddPaycheck} handleAddBill={handleAddBill}/>} />
                         <Route path='/feed' element={<Feed totalIncome={totalIncome} totalBills={totalBills} paychecks={paychecks} bills={bills}/>} />
                         <Route path='/signup' element={<SignUp />} />
