@@ -107,8 +107,8 @@ export default function App() {
     return (
         <Router>
             <div style={{ backgroundColor: '#e6e6fa' }}>
-                {/* <Nav user={user} logMeOut={logMeOut} />
-                {showMessage()} */}
+                {/* <Nav user={user} logMeOut={logMeOut} /> */}
+                {/* {showMessage()} */}
 
                     <Routes>
                         <Route path='/' element={<Landing />} />
