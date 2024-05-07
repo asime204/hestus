@@ -3,25 +3,25 @@ import { Routes, Route, BrowserRouter as Router, redirect } from 'react-router-d
 // import Nav from './components/Nav';
 import Landing from './views/Landing';
 // import SignUp from './views/Signup';
-// import Login from './views/Login';
+import Login from './components/Login';
 import Home from './views/Home';
 // import Budget from './views/Budget';
 
 
 
 export default function App() {
-    // const getUserFromLocalStorage = () => {
-    //     const foundUser = localStorage.getItem('user107')
-    //     if (foundUser){
-    //         return JSON.parse(foundUser)
-    //     }
-    //     return {}
-    // };
+    const getUserFromLocalStorage = () => {
+        const foundUser = localStorage.getItem('user107')
+        if (foundUser){
+            return JSON.parse(foundUser)
+        }
+        return {}
+    };
 
-    // const logMeIn = (user) => {
-    //         setUser(user);
-    //         localStorage.setItem('user107', JSON.stringify(user))
-    //     };
+    const logMeIn = (user) => {
+            setUser(user);
+            localStorage.setItem('user107', JSON.stringify(user))
+        };
     // const logMeOut = () => {
     //     setUser({});
     //     localStorage.removeItem('user107')
@@ -31,7 +31,7 @@ export default function App() {
     //     return messages.map(m => <p>{m}</p>)
     // }
 
-    // const [user, setUser] = useState(getUserFromLocalStorage());
+    const [user, setUser] = useState(getUserFromLocalStorage());
     // const [messages, setMessages] = useState([]);
     // const [paychecks, setPaychecks] = useState([]);
     // const [bills, setBills] = useState([]);
@@ -115,11 +115,11 @@ export default function App() {
                         {/* <Route path='/budget' element={<Budget user={user} paychecks={paychecks} setPaychecks={setPaychecks} bills={bills} setBills={setBills} setLeftOver={setLeftOver} calculateLeftOver={calculateLeftOver} handleAddPaycheck={handleAddPaycheck} handleAddBill={handleAddBill}/>} /> */}
                         <Route path='/Home' element={<Home />} /> 
                         {/* totalIncome={totalIncome} totalBills={totalBills} paychecks={paychecks} bills={bills} */}
-                        {/* <Route path='/signup' element={<SignUp />} />
+                        {/* <Route path='/signup' element={<SignUp />} /> */}
                         <Route path='/login' element={<Login logMeIn={logMeIn}/>} />
-                        <Route path='/posts/:postId' element={<SinglePost user={user}/>} />
-                        <Route path='/posts/update/:postId' element={<UpdatePost user={user}/>} />
-                        <Route path='/posts/create' element={<CreatePost user={user}/>} /> */}
+                        {/* <Route path='/posts/:postId' element={<SinglePost user={user}/>} /> */}
+                        {/* <Route path='/posts/update/:postId' element={<UpdatePost user={user}/>} /> */}
+                        {/* <Route path='/posts/create' element={<CreatePost user={user}/>} /> */}
                     </Routes>
 
 
