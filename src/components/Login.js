@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-// import Redirect from 'react-router-dom';
+import { redirect } from 'react-router-dom';
 
-export default class Nav extends Component {
+export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
       password: '',
-      error: null
+      error: null,
+      isAuthenticated: false
     };
   }
 
   handleInputChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      error: null // Clear error message when user types
     });
   };
 
@@ -23,10 +25,10 @@ export default class Nav extends Component {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in 
+        // Signed in
         const user = userCredential.user;
-        // Redirect to home page
-        this.setState({ redirectToHome: true });
+        // Set isAuthenticated to true
+        this.setState({ isAuthenticated: true });
       })
       .catch((error) => {
         this.setState({ error: error.message });
@@ -34,11 +36,11 @@ export default class Nav extends Component {
   };
 
   render() {
-    const { email, password, error } = this.state;
+    const { email, password, error, isAuthenticated } = this.state;
 
-    // if (redirectToHome) {
-    //     return <Redirect to="/Home" />;
-    //   }   
+    if (isAuthenticated) {
+      return <redirect to="/Home" />;
+    }
 
     return (
       <div>
