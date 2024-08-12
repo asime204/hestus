@@ -28,7 +28,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-console.log(process.env.REACT_APP_FIREBASE_API_KEY)
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
