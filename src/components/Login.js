@@ -20,14 +20,14 @@ export default class Login extends Component {
     });
   };
 
-  handleLogin = () => {
+  handleLogin = (e) => {
+    e.preventDefault(); // Prevent default form submission
     const { email, password } = this.state;
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        // Set isAuthenticated to true
         this.setState({ isAuthenticated: true });
       })
       .catch((error) => {
@@ -43,18 +43,43 @@ export default class Login extends Component {
     }
 
     return (
-      <div>
-        <h2>Login</h2>
-        <div>
-          <label>Email:</label>
-          <input type="email" name="email" value={email} onChange={this.handleInputChange} />
+      <div className='login-body' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#e6e6fa', height: '100vh' }}>
+        <div className='login-form' style={{ width: '400px', padding: '20px', boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)', borderRadius: '10px', backgroundColor: '#2c3e50' }}>
+          <h2 style={{ color: '#fff', marginBottom: '20px' }}>Login</h2>
+          <form onSubmit={this.handleLogin}>
+            <div style={{ marginBottom: '10px' }}>
+              <label htmlFor="email" style={{ color: '#fff' }}>Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={email}
+                onChange={this.handleInputChange}
+                style={{ display: 'block', width: '100%', padding: '10px', borderRadius: '20px', border: '1px solid #ccc', backgroundColor: '#2c3e50', color: '#fff' }}
+                required
+              />
+            </div>
+            <div style={{ marginBottom: '10px' }}>
+              <label htmlFor="password" style={{ color: '#fff' }}>Password</label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                value={password}
+                onChange={this.handleInputChange}
+                style={{ display: 'block', width: '100%', padding: '10px', borderRadius: '20px', border: '1px solid #ccc', backgroundColor: '#2c3e50', color: '#fff' }}
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              style={{ width: '100%', padding: '10px', borderRadius: '20px', border: 'none', backgroundColor: '#e6e6fa', color: '#2c3e50', fontWeight: 'bold' }}
+            >
+              Login
+            </button>
+            {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
+          </form>
         </div>
-        <div>
-          <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleInputChange} />
-        </div>
-        {error && <div style={{ color: 'red' }}>{error}</div>}
-        <button onClick={this.handleLogin}>Login</button>
       </div>
     );
   }

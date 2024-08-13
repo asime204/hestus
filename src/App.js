@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect } from 'react';
 import { Routes, Route, BrowserRouter as Router, redirect } from 'react-router-dom';
 // import Nav from './components/Nav';
 import Landing from './views/Landing';
-// import SignUp from './views/Signup';
+import SignUp from './views/Signup';
 import Login from './components/Login';
 import Home from './views/Home';
 // import Budget from './views/Budget';
@@ -115,7 +115,7 @@ export default function App() {
                         {/* <Route path='/budget' element={<Budget user={user} paychecks={paychecks} setPaychecks={setPaychecks} bills={bills} setBills={setBills} setLeftOver={setLeftOver} calculateLeftOver={calculateLeftOver} handleAddPaycheck={handleAddPaycheck} handleAddBill={handleAddBill}/>} /> */}
                         <Route path='/Home' element={<Home />} /> 
                         {/* totalIncome={totalIncome} totalBills={totalBills} paychecks={paychecks} bills={bills} */}
-                        {/* <Route path='/signup' element={<SignUp />} /> */}
+                        <Route path='/signup' element={<SignUp />} />
                         <Route path='/login' element={<Login logMeIn={logMeIn}/>} />
                         {/* <Route path='/posts/:postId' element={<SinglePost user={user}/>} /> */}
                         {/* <Route path='/posts/update/:postId' element={<UpdatePost user={user}/>} /> */}
