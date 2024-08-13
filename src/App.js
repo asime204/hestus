@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from 'react';
 import { Routes, Route, BrowserRouter as Router, redirect } from 'react-router-dom';
-// import Nav from './components/Nav';
+import Nav from './components/Nav';
 import Landing from './views/Landing';
 import SignUp from './components/Signup';
 import Login from './components/Login';
@@ -22,10 +22,10 @@ export default function App() {
             setUser(user);
             localStorage.setItem('user107', JSON.stringify(user))
         };
-    // const logMeOut = () => {
-    //     setUser({});
-    //     localStorage.removeItem('user107')
-    // };
+    const logMeOut = () => {
+        setUser({});
+        localStorage.removeItem('user107')
+    };
 
     // const showMessage = () => {
     //     return messages.map(m => <p>{m}</p>)
@@ -107,7 +107,7 @@ export default function App() {
     return (
         <Router>
             <div style={{ backgroundColor: '#e6e6fa' }}>
-                {/* <Nav user={user} logMeOut={logMeOut} /> */}
+                <Nav user={user} logMeOut={logMeOut} />
                 {/* {showMessage()} */}
 
                     <Routes>
