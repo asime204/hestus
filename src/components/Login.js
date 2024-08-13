@@ -2,17 +2,35 @@ import React, { Component } from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { redirect } from 'react-router-dom';
 
+/**
+ * Login Component
+ * 
+ * A React class component for user login functionality. This component provides a form for users to input their email and password
+ * to log into their account using Firebase Authentication.
+ */
 export default class Login extends Component {
+  /**
+   * Initializes the component state.
+   * 
+   * @param {Object} props - The props passed to the component.
+   */
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
-      error: null,
-      isAuthenticated: false
+      email: '',              // Stores the email input value.
+      password: '',           // Stores the password input value.
+      error: null,            // Stores any error message related to the login process.
+      isAuthenticated: false  // Indicates whether the user is authenticated.
     };
   }
 
+  /**
+   * Handles changes to the input fields by updating the component state.
+   * 
+   * Clears any existing error message when the user types in the input fields.
+   * 
+   * @param {Event} e - The event object from the input field.
+   */
   handleInputChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -20,24 +38,42 @@ export default class Login extends Component {
     });
   };
 
+  /**
+   * Handles the form submission for user login.
+   * 
+   * Prevents the default form submission behavior, retrieves email and password from state,
+   * and attempts to authenticate the user with Firebase Authentication.
+   * 
+   * @param {Event} e - The event object from the form submission.
+   */
   handleLogin = (e) => {
     e.preventDefault(); // Prevent default form submission
     const { email, password } = this.state;
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
+        // Successfully signed in
         const user = userCredential.user;
         this.setState({ isAuthenticated: true });
       })
       .catch((error) => {
+        // Handle errors during login
         this.setState({ error: error.message });
       });
   };
 
+  /**
+   * Renders the Login form component.
+   * 
+   * If the user is authenticated, redirects to the "/Home" route.
+   * Otherwise, renders the login form with styles and conditionally displays error messages.
+   * 
+   * @returns {JSX.Element} The rendered form element or a redirect.
+   */
   render() {
     const { email, password, error, isAuthenticated } = this.state;
 
+    // Redirect to "/Home" if the user is authenticated
     if (isAuthenticated) {
       return <redirect to="/Home" />;
     }
