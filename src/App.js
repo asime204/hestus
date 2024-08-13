@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect } from 'react';
 import { Routes, Route, BrowserRouter as Router, redirect } from 'react-router-dom';
 // import Nav from './components/Nav';
 import Landing from './views/Landing';
-import SignUp from './views/Signup';
+import SignUp from './components/Signup';
 import Login from './components/Login';
 import Home from './views/Home';
 // import Budget from './views/Budget';
